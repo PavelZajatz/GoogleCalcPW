@@ -1,3 +1,9 @@
+## Test Suite Goal
+The goal is to build an automated end-to-end test suite that tests the functionality of the calculator component on Google. 
+Calculator only has the buttons **_0123456789.=+-×÷AC/CE._**
+
+![img.png](img.png)
+
 # Set up python environment for autotests
 1. Make sure you have python installed on your machine by typing in the console "python --version" 
    (python 3.12 was used for test development)
