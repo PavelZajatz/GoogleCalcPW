@@ -16,7 +16,7 @@ Calculator only has the buttons **_0123456789.=+-×÷AC/CE._**
 
 # Run tests
 - To run all tests, execute the following script:
-  > pytest
+  > pytest --browser firefox --headed --slowmo 500
 
 # Additional options:
 

@@ -1,8 +1,5 @@
-import re
-import time
-
-
 class CalcPage:
+    """Class with methods for Google calculator interaction"""
     URL = "https://www.google.com/"
     CALC_NAME = "calculator"
 
@@ -30,11 +27,16 @@ class CalcPage:
         self.answer = page.locator('//*[@role="presentation"][@tabindex="0"]//span')
 
     def open_calc(self):
+        """Method to Open Calculator on Google page"""
         self.page.goto(self.URL)
         self.search_field.fill(self.CALC_NAME)
         self.first_option.click()
 
-    def press_button(self, button):
+    def press_button(self, button, delay=0):
+        """Method to press Calculator buttons
+        :param button: One of the Calculator buttons - "0123456789.=+-×÷AC/CE"
+        :param delay: Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.
+        """
         buttons = {
             ".": self.point_btn,
             "0": self.zero_btn,
@@ -52,10 +54,11 @@ class CalcPage:
             "/": self.divide_btn,
             "*": self.multiply_btn,
             "=": self.equals_btn,
-            "AC": self.clear_entry_btn
+            "AC": self.clear_entry_btn,
+            "CE": self.clear_entry_btn
         }
-        buttons[str(button)].click()
+        buttons[str(button)].click(delay=delay)
 
     def read_answer(self):
-        return self.page.locator('//*[@role="presentation"][@tabindex="0"]//span').inner_text()
-        #return self.page.inner_text(self.answer)
+        """Method to read calculated answer"""
+        return self.answer.inner_text()
